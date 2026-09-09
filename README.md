@@ -1,6 +1,6 @@
 # Meeting Flyby for Mac
 
-_A macOS menu bar app. Requires macOS 13 or later._
+_A macOS menu bar app. Universal (Apple Silicon + Intel), macOS 11 Big Sur or later._
 
 A macOS menu bar app that flies a little pet across your screen before each meeting — **above
 everything, including fullscreen video calls**. Built because system notifications get buried
