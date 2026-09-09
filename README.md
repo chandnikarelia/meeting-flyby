@@ -13,7 +13,8 @@ behind a fullscreen Zoom/Meet window exactly when you need them.
 > ⚠️ This app isn't signed with an Apple Developer certificate, so macOS blocks it on first
 > launch. That's expected — the steps below get past it.
 
-1. Download `MeetingFlyby-for-Mac.dmg` from the [latest release](../../releases/latest).
+1. Get `MeetingFlyby-for-Mac.dmg` from your team (Mindtickle: ask Chandni), or build it
+   yourself with `./build.sh && ./make-dmg.sh`.
 2. Double-click the DMG, then drag **MeetingFlyby** onto the **Applications** shortcut.
 3. Double-click it. macOS will say it "cannot verify the developer" — click **Done**.
 4. Open **System Settings → Privacy & Security**, scroll down, click **Open Anyway**, confirm.
@@ -68,10 +69,23 @@ open build/MeetingFlyby.app
 `build.sh` invokes `swiftc` directly rather than Swift Package Manager — SPM's manifest
 compilation was broken on the machine this was written on.
 
-## ⚠️ Keep this repository private
+## Google sign-in credentials
 
-`Sources/MeetingFlyby/BundledCredentials.swift` contains the Google OAuth client for the
-`meeting-flyby` Cloud project so teammates can sign in without their own Cloud setup. The
-consent screen is set to **Internal**, so only `mindtickle.com` accounts can complete sign-in
-— but if this repo is ever made public, **rotate the secret first** (Cloud Console → Clients →
-Meeting Flyby macOS → Add secret, then disable and delete the old one).
+This repository contains **no** OAuth credentials. `build.sh` generates
+`Sources/MeetingFlyby/BundledCredentials.swift` at build time from a local, gitignored
+`credentials.env` — so the client never enters git history, and repo visibility can't leak it.
+
+To build with Google sign-in enabled:
+
+```bash
+cp credentials.env.example credentials.env
+# fill in GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET from your own Cloud Console
+# (APIs & Services → Credentials → OAuth client ID, type "Desktop app")
+./build.sh
+```
+
+Build without it and the app still works — users pick **macOS Calendar** (no Google Cloud
+setup needed) or paste their own Client ID on the Advanced page.
+
+Prebuilt Mindtickle-internal builds are shared directly with the team rather than attached
+to public releases, since a bundled client secret is recoverable from any distributed binary.
