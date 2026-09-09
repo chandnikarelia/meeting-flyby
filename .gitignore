@@ -6,3 +6,7 @@ build/
 
 # macOS cruft
 .DS_Store
+
+# Local OAuth credentials — injected into the build, never committed.
+credentials.env
+Sources/MeetingFlyby/BundledCredentials.swift
