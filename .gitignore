@@ -1,0 +1,8 @@
+# Build artifacts — the compiled binary embeds the bundled OAuth client, so keep it
+# out of git history entirely; releases are attached to GitHub Releases instead.
+build/
+.build/
+*.zip
+
+# macOS cruft
+.DS_Store
