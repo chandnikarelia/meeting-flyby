@@ -1,4 +1,6 @@
-# Meeting Flyby
+# Meeting Flyby for Mac
+
+_A macOS menu bar app. Requires macOS 13 or later._
 
 A macOS menu bar app that flies a little pet across your screen before each meeting — **above
 everything, including fullscreen video calls**. Built because system notifications get buried
@@ -11,8 +13,8 @@ behind a fullscreen Zoom/Meet window exactly when you need them.
 > ⚠️ This app isn't signed with an Apple Developer certificate, so macOS blocks it on first
 > launch. That's expected — the steps below get past it.
 
-1. Download `MeetingFlyby.zip` from the [latest release](../../releases/latest).
-2. Unzip it and drag **MeetingFlyby.app** into your **Applications** folder.
+1. Download `MeetingFlyby-for-Mac.dmg` from the [latest release](../../releases/latest).
+2. Double-click the DMG, then drag **MeetingFlyby** onto the **Applications** shortcut.
 3. Double-click it. macOS will say it "cannot verify the developer" — click **Done**.
 4. Open **System Settings → Privacy & Security**, scroll down, click **Open Anyway**, confirm.
 5. A setup window appears → choose **Sign in with Google** → sign in with your Mindtickle
@@ -59,6 +61,7 @@ Requires the Xcode Command Line Tools.
 
 ```bash
 ./build.sh          # compiles and signs into build/MeetingFlyby.app
+./make-dmg.sh       # packages build/MeetingFlyby-for-Mac.dmg
 open build/MeetingFlyby.app
 ```
 

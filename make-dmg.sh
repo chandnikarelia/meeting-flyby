@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 APP="build/MeetingFlyby.app"
-DMG="build/MeetingFlyby.dmg"
+DMG="build/MeetingFlyby-for-Mac.dmg"
 STAGE="build/dmg-stage"
 
 [ -d "$APP" ] || { echo "Run ./build.sh first"; exit 1; }
